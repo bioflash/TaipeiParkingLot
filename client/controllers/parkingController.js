@@ -46,7 +46,8 @@ export default function($scope, map,taipeiParkingSvc,$interval){
                             $scope.parking.parkingLots.push(marker)
 
                         })
-                        $scope.parking.sortParkingLot()
+                        let direction = ($scope.parking.sortedBy==='avail')?-1:1
+                        $scope.parking.sortParkingLot(direction)
                         $scope.parking.parkingInfoRefresh++
                     }else{
                         throw new Error("Unable to query parking lot info")
@@ -76,11 +77,10 @@ export default function($scope, map,taipeiParkingSvc,$interval){
         }
     }
 
-    $scope.parking.sortParkingLot = function(){
-        //let parkingLots = $scope.parking.parkingLots;
-       //$scope.parking.parkingLots = undefined
-       $scope.parking.parkingLots = $scope.parking.parkingLots.sort((a,b)=>{
-                            return (Number(a[$scope.parking.sortedBy])<Number(b[$scope.parking.sortedBy]))?-1:(Number(a[$scope.parking.sortedBy])==Number(b[$scope.parking.sortedBy]))?0:1
+    $scope.parking.sortParkingLot = function(direction=1){
+        if(typeof direction!=='number') throw new Error("direction needs to be number")
+        $scope.parking.parkingLots = $scope.parking.parkingLots.sort((a,b)=>{
+                            return direction* ((Number(a[$scope.parking.sortedBy])<Number(b[$scope.parking.sortedBy]))?-1:(Number(a[$scope.parking.sortedBy])==Number(b[$scope.parking.sortedBy]))?0:1)
                         })
     }
     $scope.parking.stopSpeakParkingInfo = function(){

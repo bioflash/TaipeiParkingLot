@@ -21,7 +21,8 @@ export default function(){
 
             scope.parking.setSortBy = function(sortedBy){
                 scope.parking.sortedBy=sortedBy
-                scope.parking.sortParkingLot()
+                let direction = (sortedBy==='avail')?-1:1
+                scope.parking.sortParkingLot(direction)
             }
 
         }
