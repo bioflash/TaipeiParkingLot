@@ -1,4 +1,5 @@
 var icon = require('../images/human.gif')
+var geolib = require('geolib')
 
 import {geocodeAddress, createMarker, setCenter} from '../utils/googleMap'
 const REFRESH_TIME_FRAME = 20000
@@ -24,9 +25,9 @@ export default function($scope, map,taipeiParkingSvc,$interval){
     }
 
 
-    $scope.parking.refreshParkingInfo = function(latitude, longigude, radius){
+    $scope.parking.refreshParkingInfo = function(latitude, longitude, radius){
         $scope.parking.clearParkingPositions()
-        taipeiParkingSvc.query(latitude, longigude, radius*1000).then(
+        taipeiParkingSvc.query(latitude, longitude, radius*1000).then(
                 (response)=>{
                     if (response.status==200){
                         response.data.avails.forEach((park)=>{
@@ -41,9 +42,11 @@ export default function($scope, map,taipeiParkingSvc,$interval){
                             marker.addListener('click', function(){
                                 infoWindow.open(map, marker)    
                             })
-                            
+                            marker.distanceToTarget = geolib.getDistance({latitude: Number(park.latitude), longitude:Number(park.longitude)}, {latitude:latitude, longitude:longitude})/1000
                             $scope.parking.parkingLots.push(marker)
+
                         })
+                        $scope.parking.sortParkingLot()
                         $scope.parking.parkingInfoRefresh++
                     }else{
                         throw new Error("Unable to query parking lot info")
@@ -73,7 +76,13 @@ export default function($scope, map,taipeiParkingSvc,$interval){
         }
     }
 
-    
+    $scope.parking.sortParkingLot = function(){
+        //let parkingLots = $scope.parking.parkingLots;
+       //$scope.parking.parkingLots = undefined
+       $scope.parking.parkingLots = $scope.parking.parkingLots.sort((a,b)=>{
+                            return (Number(a[$scope.parking.sortedBy])<Number(b[$scope.parking.sortedBy]))?-1:(Number(a[$scope.parking.sortedBy])==Number(b[$scope.parking.sortedBy]))?0:1
+                        })
+    }
     $scope.parking.stopSpeakParkingInfo = function(){
         mute = true
         isSpeaking=false

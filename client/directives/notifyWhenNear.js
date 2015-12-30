@@ -36,7 +36,7 @@ export default function($interval){
                 _updateCurrentLocation(scope).then(
                     ()=>{
                         if (scope.target.coord){
-                            withInDistance = geolib.isPointInCircle({latitude: scope.target.coord.latitude, longitude:scope.target.coord.longitude}, {latitude:scope.currentLocation.latitude, longitude:scope.currentLocation.longitude}, Number(scope.distance)*1000)                                
+                            withInDistance = geolib.isPointInCircle({latitude: scope.target.coord.latitude, longitude:scope.target.coord.longitude}, {latitude:scope.currentLocation.latitude, longitude:scope.currentLocation.longitude}, Number(scope.distance)*1000)
                         }
 
                         if (withInDistance && !scope.mute){
