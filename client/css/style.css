@@ -1,0 +1,32 @@
+ html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#map {
+    margin-top:20px;
+    height: 50%;
+    width: 50%;
+}
+
+#parkingList ul{
+    list-style-type: none
+}
+
+#parkingList li{
+    display: inline;
+    float: left;
+    margin-right: 10px;
+}
+
+#parkingList li:first-child{
+    clear:both;
+}
+
+.speak::after{
+    content:url('images/speak.png');
+}
+
+.mute::after{
+    content:url('images/mute.png');
+}

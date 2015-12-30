@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myModule'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taipei Parking Lot</title>
+</head>
+
+<body ng-controller='parkingController'>
+<notify-when-near target="parking.target" invoke="parking.speakParkingInfo()" cancel="parking.stopSpeakParkingInfo()" parking="parking"></notify-when-near>
+<map-loc-pref></map-loc-pref>
+<div>
+    
+    <parking-space-list></parking-space-list>        
+    <div id="map"></div>
+</div>
+
+
+</body>
+</html>
