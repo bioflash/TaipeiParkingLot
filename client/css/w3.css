@@ -11,6 +11,15 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 #parkingList td:last-child{
     text-align: right
 }
+@media only screen and (min-width:993px){
+ #map {
+    margin-top:20px;
+    min-height:100px;
+    height:60%;
+    width:70%; 
+    float:right; 
+    right:5%
+}
 body{margin:0;height:100%;}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block;vertical-align:baseline}
