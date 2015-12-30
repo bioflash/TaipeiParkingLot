@@ -6,7 +6,7 @@ const REFRESH_TIME_FRAME = 20000
 export default function($scope, map,taipeiParkingSvc,$interval){
     $scope.parking = {}
     $scope.parking.radius = 1
-    $scope.parking.target = {address:'南港展覽館', coord:undefined, marker:undefined, removeFromMap: function(){if (this.marker) this.marker.setMap(null)}}
+    $scope.parking.target = {address:'南港軟體園區(一期大門)', coord:undefined, marker:undefined, removeFromMap: function(){if (this.marker) this.marker.setMap(null)}}
     $scope.parking.parkingLots = []
     $scope.parking.geocoder = new google.maps.Geocoder()
     $scope.parking.parkingInfoRefresh = 0
