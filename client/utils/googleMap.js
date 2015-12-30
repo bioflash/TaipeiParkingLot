@@ -11,7 +11,7 @@ export default {
         googleMapScript.innerHTML = ""
         googleMapScript.setAttribute('async', '');
         googleMapScript.setAttribute('defer', '');
-        googleMapScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_API_KEY+"&callback=initMap");
+        googleMapScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key="+GOOGLE_API_KEY+"&libraries=places&callback=initMap");
         document.getElementsByTagName('BODY')[0].appendChild(googleMapScript);
     }
 }

@@ -11,9 +11,11 @@ export default function(map){
                         <input type="text" name='radius' ng-model='parking.radius' id='radius' size=4>
                         <button id='submit'>Search</button>
                   </div>`,
-        link: function(scope, element, attrs){        
-            scope.parking.searchForParkingLot()
+        link: function(scope, element, attrs){     
 
+            var addressInput = $('#address', element)[0]
+            var searchBox = new google.maps.places.SearchBox(addressInput)
+            scope.parking.searchForParkingLot()
             $('#submit',element[0]).on('click', ()=>{
                 scope.parking.searchForParkingLot()
             })

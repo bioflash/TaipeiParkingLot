@@ -1005,7 +1005,7 @@
 "totalcar":"147",
 "totalmotor":"0",
 "totalbike":"0",
-"Pregnancy_First":"",
+"Pregnancy_First":"3",
 "Handicap_First":"4",
 "FareInfo":{
 "WorkingDay":[
@@ -10642,7 +10642,7 @@
 "totalcar":"384",
 "totalmotor":"0",
 "totalbike":"31",
-"Pregnancy_First":"3",
+"Pregnancy_First":"2",
 "Handicap_First":"8",
 "FareInfo":{
 "WorkingDay":[
