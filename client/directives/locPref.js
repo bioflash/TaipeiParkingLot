@@ -3,15 +3,16 @@ export default function(map){
     
     return {
         restrict:'E',
-        templateUrl:'../templates/locPref.html',
-        link: function(scope, element, attrs){
-            //var geocoder = new google.maps.Geocoder()
-            
+        template:`<div style="margin:20px 10px">
+                        <label for='address'>搜尋</label>
+                        <input type="text" name='address' ng-model='parking.target.address' id='address' size=20>
+
+                        <label for='radius'>附近的停車位, 搜尋半徑 (公里)</label>
+                        <input type="text" name='radius' ng-model='parking.radius' id='radius' size=4>
+                        <button id='submit'>Search</button>
+                  </div>`,
+        link: function(scope, element, attrs){        
             scope.parking.searchForParkingLot()
-            /*geocodeAddress(scope.parking.address, geocoder, map, (geoLocation)=>{
-                setCenter(map,geoLocation);
-                scope.parking.markers.push(createMarker(map, geoLocation, icon));
-            })*/
 
             $('#submit',element[0]).on('click', ()=>{
                 scope.parking.searchForParkingLot()

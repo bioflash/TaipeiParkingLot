@@ -1,10 +1,16 @@
 var geolib = require('geolib');
 var $ = require('jquery');
-//const INTERVAL_TO_REFRESH_CURRENT_LOCATION = 10000
 const DEFAULT_DISTANCE = 1
 export default function($interval){
     return {
-        templateUrl: '../templates/notifyWhenNear.html',
+        template: `<div style="margin:20px 10px">
+                        <span ng-class="mute?'mute':'speak'" ng-click="toggleSpeak()"></span>
+                            <label for='distance'>
+                                當距離目標位置
+                            </label>
+                            <input id='distance' ng-model='distance' size="4"> 
+                            <label>公里時通知我</label>    
+                    </div>`,
         scope:{
                 target:"=",
                 parking:"=",
