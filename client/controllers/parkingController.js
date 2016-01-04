@@ -33,7 +33,7 @@ export default function($scope, map,taipeiParkingSvc,$interval){
                         response.data.avails.forEach((park)=>{
                             let marker = createMarker(map, {lat:Number(park.latitude), lng: Number(park.longitude)},undefined,park.name)
                             marker.name = park.name
-                            marker.avail = park.availablecar
+                            marker.avail = park.availableCar
                             marker.fareInfo = park.FareInfo
 
                             let infoWindow = new google.maps.InfoWindow({

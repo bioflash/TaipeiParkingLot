@@ -1,7 +1,7 @@
-var map = require('../lib/map');
+//var map = require('../lib/map');
 var geolib = require('geolib');
 var request = require('request');
-var parkingData = require('../lib/parkingData')
+
 
 exports = module.exports  ={
     getAdressWithinRange: function(req, res, next){
@@ -14,10 +14,10 @@ exports = module.exports  ={
 
     availableParkingLots: function(req, res, next){
         let {latitude, longitude, limit} = req.query
-        let avails = parkingData.getRealtimeParkingData().avails.filter((pos)=>{
+        let avails = req['avail'].filter((pos)=>{
             return filterWithinLimit(pos, latitude, longitude, limit)
         })
-        res.json({updateTime:parkingData.getRealtimeParkingData().updateTime, avails:avails})
+        res.json({avails:avails})
     }
 }
 

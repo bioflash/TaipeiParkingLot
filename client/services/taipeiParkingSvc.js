@@ -4,7 +4,7 @@ export default function($http){
         query: function(latitude,longitude,limit){
             return $http({
                 method:'GET',
-                url:'./api/taipeiParking/available',
+                url:'./api/available',
                 params:{latitude:latitude, longitude: longitude, limit: limit}
             })
         }

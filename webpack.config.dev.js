@@ -43,7 +43,7 @@ module.exports = {
         contentBase: path.join(__dirname, '/client'), /* This allow webpack-dev-server to set static source using express.static middleware */
         inline:true /* same effect as invoking webpack-dev-server --inline*/,
         proxy:{
-            '/api/taipeiParking*':{
+            '/api*':{
                 target: 'http://localhost:3000'
             }
         }

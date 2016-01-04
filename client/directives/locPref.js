@@ -15,8 +15,14 @@ export default function(map){
 
             var addressInput = $('#address', element)[0]
             var searchBox = new google.maps.places.SearchBox(addressInput)
+
+            map.addListener('bounds_changed', function() {
+               searchBox.setBounds(map.getBounds());
+             });
+
             scope.parking.searchForParkingLot()
             $('#submit',element[0]).on('click', ()=>{
+                scope.parking.target.address = $('#address').val()
                 scope.parking.searchForParkingLot()
             })
         }
