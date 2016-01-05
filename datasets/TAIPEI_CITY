@@ -14,7 +14,7 @@
 
 
 {"data":{
-"UPDATETIME":"Mon Jan 04 00:00:00 CST 2016",
+"UPDATETIME":"Tue Jan 05 00:00:00 CST 2016",
 "park":[
 {
 "id":"058",
@@ -1082,7 +1082,7 @@
 "totalcar":"147",
 "totalmotor":"0",
 "totalbike":"0",
-"Pregnancy_First":"3",
+"Pregnancy_First":"",
 "Handicap_First":"4",
 "FareInfo":{
 "WorkingDay":[
@@ -11031,7 +11031,7 @@
 "totalcar":"223",
 "totalmotor":"0",
 "totalbike":"0",
-"Pregnancy_First":"3",
+"Pregnancy_First":"2",
 "Handicap_First":"6",
 "FareInfo":{
 "WorkingDay":[
