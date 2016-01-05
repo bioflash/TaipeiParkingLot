@@ -4,8 +4,10 @@ var path = require('path');
 var routes = require('./routes');
 var express = require('express');
 var parkingInfo = require('./lib/parkingInfo');
-//var parkingData = require('./lib/parkingData')
 var app = express();
+var log4js = require('log4js');
+var log = log4js.getLogger();
+var commons = require('./lib/commons')
 app.set('port', process.env.PORT || 3000);
 app.use(express.static(path.join(__dirname, 'client')));
 //Read all maps before server started
@@ -21,10 +23,14 @@ parkingInfo.initMaps().then(
                         app.get('/api/available', routes.availableParkingLots);
                         app.listen(app.get('port'),()=>{
                             parkingInfo.startRealtimeParkingUpdateSchedular();
-                            console.log('server started at port', app.get('port'))}
-                        );
+                            var port  = app.get('port')
+                            log.info(`Server started at port ${port}`)
+                        });
                        
                         },
-                (fail)=> { throw new Error('Unable to init server')}
+                (fail)=> { 
+                    log.info('fail')
+                    log.error(commons.wrapError(fail, "Start server error"));
+                }
 );
 
