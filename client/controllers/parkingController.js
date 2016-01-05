@@ -13,14 +13,26 @@ export default function($scope, map,taipeiParkingSvc,$interval){
     let isSpeaking = false //used to defer speaking parkinglot info while it is speaking now
     let mute = false //used to remember whether to mute the speaking
 
+    let circle = undefined
     $scope.parking.searchForParkingLot = function(){
         $scope.parking.target.removeFromMap();
 
         geocodeAddress($scope.parking.target.address, $scope.parking.geocoder, map, (geoLocation)=>{
+            
             setCenter(map, geoLocation);
             $scope.parking.target.marker = createMarker(map, geoLocation, icon);
             $scope.parking.target.coord = {latitude: geoLocation.lat(), longitude: geoLocation.lng()}        
             $scope.parking.refreshParkingInfo(geoLocation.lat(), geoLocation.lng(), $scope.parking.radius)
+
+            //Draw the range to search for parking lot
+            if (circle) circle.setMap(null)
+            circle = new google.maps.Circle({
+              map: map,
+              radius: $scope.parking.radius*1000,    // draw in meters
+              fillColor: '#AA0000',
+              fillOpacity: 0.15,
+            });
+            circle.bindTo('center', $scope.parking.target.marker, 'position');
         })            
     }
 

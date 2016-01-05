@@ -24,21 +24,7 @@ export default function(map){
             $('#submit',element[0]).on('click', ()=>{
                 scope.parking.target.address = $('#address').val()
                 scope.parking.searchForParkingLot()
-
-                //Draw the area defined by user on the map
-                if (scope.parking.circle) scope.parking.circle.setMap(null)
-
-                scope.parking.circle = new google.maps.Circle({
-                  map: map,
-                  radius: scope.parking.radius*1000,    // draw in meters
-                  fillColor: '#AA0000',
-                  fillOpacity: 0.15,
-                });
-                scope.parking.circle.bindTo('center', scope.parking.target.marker, 'position');
-            })
-
-
-            
+            })            
         }
     }
 }
