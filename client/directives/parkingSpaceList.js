@@ -9,7 +9,7 @@ export default function(){
                         </thead>
                         <tbody>
                             <tr ng-repeat='park in parking.parkingLots'>
-                                <td>{{park.name | limitStringLength:10}}</td>
+                                <td><a href="https://maps.google.com.tw/maps?daddr={{park.position.lat()+','+park.position.lng()}}">{{park.name | limitStringLength:10}}</a></td>
                                 <td>{{park.avail}}</td>
                                 <td>{{park.distanceToTarget}}</td>
                             </tr>
